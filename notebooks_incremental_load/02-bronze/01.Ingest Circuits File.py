@@ -1,0 +1,54 @@
+# Databricks notebook source
+dbutils.widgets.text("p_batch_id", "")
+v_batch_id = dbutils.widgets.get("p_batch_id")
+
+# COMMAND ----------
+
+# MAGIC %run ../00-common/01.environment-config
+
+# COMMAND ----------
+
+# MAGIC %run ../00-common/02.bronze-helpers
+
+# COMMAND ----------
+
+source_file = f"{landing_folder_path}/{v_batch_id}/circuits.csv"
+table_name = f"{catalog_name}.{bronze_schema}.circuits"
+
+# COMMAND ----------
+
+from pyspark.sql.types import StructType, StructField, StringType, DoubleType
+
+circuits_schema = StructType([
+    StructField('circuitId',   StringType()),
+    StructField("url",         StringType()),
+    StructField("circuitName", StringType()),
+    StructField("lat",         DoubleType()),
+    StructField("long",        DoubleType()),
+    StructField("locality",    StringType()),
+    StructField("country",     StringType())
+])
+
+# COMMAND ----------
+
+circuits_df = (
+    spark.read
+         .format('csv')
+         .option('header', 'true')
+#         .option('inferSchema', 'true')
+         .option('mode', 'FAILFAST')
+         .schema(circuits_schema)
+         .load(source_file)
+)
+
+# COMMAND ----------
+
+circuits_final_df = add_ingestion_metadata(circuits_df)
+
+# COMMAND ----------
+
+write_to_bronze (
+    input_df = circuits_final_df,
+    target_table = table_name,
+    batch_id = v_batch_id
+)
