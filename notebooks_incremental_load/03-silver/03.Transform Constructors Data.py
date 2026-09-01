@@ -1,26 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Transform Constructors Data
-# MAGIC
-# MAGIC 1. Read bronze `constructors` table
-# MAGIC 1. Keep only the columns required for analytics (Drop `url` column)
-# MAGIC 1. Standardise column names using snake_case (`constructorId` → `constructor_id`)
-# MAGIC 1. Rename columns to make them more meaningful (`name` → `constructor_name`)
-# MAGIC 1. Remove duplicate records
-# MAGIC 1. Transform values of column `nationality` to Title Case
-# MAGIC 1. Write the transformed data to silver `constructors` table
-# MAGIC
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC #### Entity Relationship Diagram - Formula1 Bronze Schema
-# MAGIC
-# MAGIC ![Formula1 Raw Data.png](../../z-course-images/formula1-raw-data-erd.png "Formula1 Raw Data.png")
-
-# COMMAND ----------
-
 dbutils.widgets.text("p_batch_id", "")
 v_batch_id = dbutils.widgets.get("p_batch_id")  
 
