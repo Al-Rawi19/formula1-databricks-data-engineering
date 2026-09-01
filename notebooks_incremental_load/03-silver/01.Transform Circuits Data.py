@@ -1,38 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Transform Circuits Data
-# MAGIC
-# MAGIC 1. Read bronze `circuits` table
-# MAGIC 1. Keep only the columns required for analytics (Drop `url` column)
-# MAGIC 1. Standardise column names using snake_case (`circuitId` → `circuit_id`, `circuitName` → `circuit_name`)
-# MAGIC 1. Rename columns to make them more meaningful (`lat` → `latitude`, `long` → `longitude`)
-# MAGIC 1. Filter out rows where `circuit_id` is null (business key validation)
-# MAGIC 1. Remove duplicate records
-# MAGIC 1. Transform values of columns `circuit_name` and `locality` to Title Case
-# MAGIC 1. Write the transformed data to silver `circuits` table
-# MAGIC
-# MAGIC > Below changes are required to implement Incremental Load Processing
-# MAGIC 1. Accept batch_id as a parameter to the notebook
-# MAGIC 1. Process data for only the batch_id being passed in (i.e., filter reading from bronze using the batch_id)
-# MAGIC 1. Add created_timestamp, updated_timestamp and batch_id to the silver table. 
-# MAGIC 1. Merge the processed data to the silver table
-# MAGIC     - created_timestamp should only be populated at the time of inserting/ creating the record. It should not be updated during the merge update.
-# MAGIC     - Ensure that we are not overwriting the data in silver table by older bronze data (re-run scenario)
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ![incremental-data-processing-medallion.png](../../z-course-images/incremental-data-processing-medallion.png "Incremental Data Processing")
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC #### Entity Relationship Diagram - Formula1 Schema
-# MAGIC
-# MAGIC ![Formula1 Raw Data.png](../../z-course-images/formula1-raw-data-erd.png "Formula1 Raw Data.png")
-
-# COMMAND ----------
-
 dbutils.widgets.text("p_batch_id", "")
 v_batch_id = dbutils.widgets.get("p_batch_id")
 
