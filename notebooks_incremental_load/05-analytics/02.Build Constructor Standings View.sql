@@ -1,29 +1,4 @@
 -- Databricks notebook source
--- MAGIC %md
--- MAGIC # Build Constructor Standings
--- MAGIC
--- MAGIC #### Sources
--- MAGIC 1. fact_session_results
--- MAGIC 1. dim_constructors
--- MAGIC
--- MAGIC #### Output Columns
--- MAGIC 1. season
--- MAGIC 1. constructor id
--- MAGIC 1. constructor name
--- MAGIC 1. nationality
--- MAGIC 1. race starts
--- MAGIC 1. total points
--- MAGIC 1. number of wins
--- MAGIC 1. number of podiums
--- MAGIC 1. standing position
-
--- COMMAND ----------
-
--- MAGIC %md
--- MAGIC
--- MAGIC #### Entity Relationship Diagram - Formula1 Gold Schema
--- MAGIC
--- MAGIC ![Formula1 Gold Data.png](../../z-course-images/formula1-gold-data-erd.png "Formula1 Gold Data.png")
 
 -- COMMAND ----------
 
