@@ -1,36 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Build Results Fact
-# MAGIC
-# MAGIC 1. Read silver `results` table
-# MAGIC 1. Read silver `sprints` table
-# MAGIC 1. Add new column `session_type` with values `RACE` or `SPRINT`
-# MAGIC 1. UNION `results` and `sprints`
-# MAGIC 1. Derive additional columns
-# MAGIC     - is_win -> Indicates that the driver own the race
-# MAGIC     - is_podium -> Indicates that the driver scored a podium result (1, 2, 3)
-# MAGIC     - has_points -> Indicates that the driver has scored points
-# MAGIC 1. Write the transformed data to gold `fact_session_results` table
-# MAGIC
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC #### Entity Relationship Diagram - Formula1 Silver Schema
-# MAGIC
-# MAGIC ![Formula1 Silver Data.png](../../z-course-images/formula1-silver-data-erd.png "Formula1 Silver Data.png")
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC #### Entity Relationship Diagram - Formula1 Gold Schema
-# MAGIC
-# MAGIC ![Formula1 Gold Data.png](../../z-course-images/formula1-gold-data-erd.png "Formula1 Gold Data.png")
-
-# COMMAND ----------
-
 dbutils.widgets.text("p_batch_id", "")
 v_batch_id = dbutils.widgets.get("p_batch_id")
 
