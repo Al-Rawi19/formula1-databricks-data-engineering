@@ -1,37 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Build Drivers Dimension
-# MAGIC
-# MAGIC 1. Read silver `drivers` table
-# MAGIC 1. Read gold `ref_nationality_region` table
-# MAGIC 1. Join the data from `drivers` with `ref_nationality_region` using `nationality`
-# MAGIC 1. Select the required columns
-# MAGIC     - drivers.driver_id
-# MAGIC     - drivers.driver_name
-# MAGIC     - drivers.date_of_birth
-# MAGIC     - drivers.nationality
-# MAGIC     - ref_nationality_region.region
-# MAGIC 1. Write the transformed data to gold `dim_drivers` table
-# MAGIC
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC #### Entity Relationship Diagram - Formula1 Silver Schema
-# MAGIC
-# MAGIC ![Formula1 Silver Data.png](../../z-course-images/formula1-silver-data-erd.png "Formula1 Silver Data.png")
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC #### Entity Relationship Diagram - Formula1 Gold Schema
-# MAGIC
-# MAGIC ![Formula1 Gold Data.png](../../z-course-images/formula1-gold-data-erd.png "Formula1 Gold Data.png")
-
-# COMMAND ----------
-
 dbutils.widgets.text("p_batch_id", "")
 v_batch_id = dbutils.widgets.get("p_batch_id")
 
