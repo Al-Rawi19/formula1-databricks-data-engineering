@@ -1,15 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Create Control Tables
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ![Incremental Data Processing](../../z-course-images/formula1-incremental-data-processing.png "Incremental Data Processing")
-
-# COMMAND ----------
-
-# MAGIC %run ../00-common/01.environment-config
 
 # COMMAND ----------
 
