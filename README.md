@@ -177,10 +177,6 @@ The main transformation and processing logic continues to run using Apache Spark
 
 ![Bronze Tables](screenshots/bronze_tables.png)
 
-### Silver Layer
-
-![Silver Tables](screenshots/silver_tables.png)
-
 ### Gold Layer
 
 ![Gold Tables](screenshots/gold_tables.png)
