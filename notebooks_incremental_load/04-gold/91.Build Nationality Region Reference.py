@@ -1,17 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Build Nationality Region Reference
-# MAGIC
-# MAGIC 1. Create a dataframe with list of nationalities and corresponding geographic regions
-# MAGIC 1. Write the dataframe to gold `ref_nationality_region` table
-# MAGIC
-
-# COMMAND ----------
-
-# MAGIC %run ../00-common/01.environment-config
-
-# COMMAND ----------
-
 target_table = f"{catalog_name}.{gold_schema}.ref_nationality_region"
 
 # COMMAND ----------
