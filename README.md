@@ -173,10 +173,6 @@ The main transformation and processing logic continues to run using Apache Spark
 
 ## Screenshots
 
-### Architecture
-
-![Architecture](architecture/architecture.png)
-
 ### Bronze Layer
 
 ![Bronze Tables](screenshots/bronze_tables.png)
