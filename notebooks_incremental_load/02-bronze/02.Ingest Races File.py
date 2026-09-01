@@ -1,5 +1,4 @@
 # Databricks notebook source
-
 dbutils.widgets.text("p_batch_id", "")
 v_batch_id = dbutils.widgets.get("p_batch_id")
 
