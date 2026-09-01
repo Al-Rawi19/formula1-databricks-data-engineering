@@ -1,15 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Ingest results.json file
-# MAGIC 1. Read the all the files from the results folder using spark dataframe reader API
-# MAGIC 1. Define and enforce schema 
-# MAGIC 1. Add Metadata Columns 
-# MAGIC     - Source File
-# MAGIC     - Ingestion Timestamp
-# MAGIC 1. Write to bronze delta table    
-
-# COMMAND ----------
-
 dbutils.widgets.text("p_batch_id", "")
 v_batch_id = dbutils.widgets.get("p_batch_id")
 
