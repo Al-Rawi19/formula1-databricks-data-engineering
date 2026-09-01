@@ -1,11 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Complete Batch
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ![Incremental Data Processing](../../z-course-images/formula1-incremental-data-processing.png "Incremental Data Processing")
 
 # COMMAND ----------
 
