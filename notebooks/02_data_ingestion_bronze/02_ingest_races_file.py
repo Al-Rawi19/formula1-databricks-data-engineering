@@ -1,0 +1,49 @@
+# Databricks notebook source
+# MAGIC  %run ../00-common/env-config
+
+# COMMAND ----------
+
+# MAGIC %run ../00-common/bronze-functions
+
+# COMMAND ----------
+
+source_file = f"{landing_folder_path}/races.csv"
+table_name = f"{catalog_name}.{bronze_schema}.races"
+
+# COMMAND ----------
+
+from pyspark.sql.types import StructType, StructField, StringType, IntegerType, DateType
+
+races_schema = StructType([
+    StructField('season',   IntegerType()),
+    StructField("round",    IntegerType()),
+    StructField("url",      StringType()),
+    StructField("raceName", StringType()),
+    StructField("date",     DateType()),
+    StructField("circuitId", StringType())
+])
+
+# COMMAND ----------
+
+races_df = (
+    spark.read
+         .format('csv')
+         .option('header', 'true')
+         .option('mode', 'FAILFAST')
+         .schema(races_schema)
+         .load(source_file)
+)
+
+# COMMAND ----------
+
+races_final_df = add_ingestion_metadata(races_df)
+
+# COMMAND ----------
+
+(
+    races_final_df
+        .write
+        .format('delta')
+        .mode('overwrite')
+        .saveAsTable(table_name)
+)
