@@ -1,36 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Build Constructors Dimension
-# MAGIC
-# MAGIC 1. Read silver `constructors` table
-# MAGIC 1. Read gold `ref_nationality_region` table
-# MAGIC 1. Join the data from `constructors` with `ref_nationality_region` using `nationality`
-# MAGIC 1. Select the required columns
-# MAGIC     - constructors.constructor_id
-# MAGIC     - constructors.constructor_name
-# MAGIC     - constructors.nationality
-# MAGIC     - ref_nationality_region.region
-# MAGIC 1. Write the transformed data to gold `dim_constructors` table
-# MAGIC
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC #### Entity Relationship Diagram - Formula1 Silver Schema
-# MAGIC
-# MAGIC ![Formula1 Silver Data.png](../../z-course-images/formula1-silver-data-erd.png "Formula1 Silver Data.png")
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC #### Entity Relationship Diagram - Formula1 Gold Schema
-# MAGIC
-# MAGIC ![Formula1 Gold Data.png](../../z-course-images/formula1-gold-data-erd.png "Formula1 Gold Data.png")
-
-# COMMAND ----------
-
 dbutils.widgets.text("p_batch_id", "")
 v_batch_id = dbutils.widgets.get("p_batch_id")
 
