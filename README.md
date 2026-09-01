@@ -20,28 +20,7 @@ This required configuring the Databricks environment to access data stored in S3
 
 The pipeline follows a Medallion Architecture:
 
-```text
-                 Formula 1 Source Data
-                          │
-                          ▼
-                    Amazon S3
-                   Landing Layer
-                          │
-                          ▼
-                    Bronze Layer
-              Raw data + ingestion metadata
-                          │
-                          ▼
-                     Silver Layer
-             Cleaned & transformed datasets
-                          │
-                          ▼
-                      Gold Layer
-              Business-ready analytical data
-                          │
-                          ▼
-                Databricks SQL / Dashboard
-```
+![Architecture](architecture/architecture.png)
 
 ### Main Components
 
