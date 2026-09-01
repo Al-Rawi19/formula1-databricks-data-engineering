@@ -1,26 +1,4 @@
 # Databricks notebook source
-# MAGIC %md
-# MAGIC # Transform Races Data
-# MAGIC
-# MAGIC 1. Read bronze `races` table
-# MAGIC 1. Keep only the columns required for analytics (Drop `url` column)
-# MAGIC 1. Standardise column names using snake_case (`raceName` → `race_name`, `circuitId` → `circuit_id`)
-# MAGIC 1. Rename columns to make them more meaningful (`date` → `race_date`)
-# MAGIC 1. Remove duplicate records
-# MAGIC 1. Transform values of column `race_name` to Title Case
-# MAGIC 1. Write the transformed data to silver `races` table
-# MAGIC
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC
-# MAGIC #### Entity Relationship Diagram - Formula1 Schema
-# MAGIC
-# MAGIC ![Formula1 Raw Data.png](../../z-course-images/formula1-raw-data-erd.png "Formula1 Raw Data.png")
-
-# COMMAND ----------
-
 dbutils.widgets.text("p_batch_id", "")
 v_batch_id = dbutils.widgets.get("p_batch_id")
 
